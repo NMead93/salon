@@ -72,6 +72,20 @@ namespace Salon
       Assert.Equal(testClient, foundClient);
     }
 
+    [Fact]
+    public void Test_DeleteOneClientFromDatabase()
+    {
+        Client testClient = new Client("Morgan", 3);
+        testClient.Save();
+        Client testClient2 = new Client("Anna", 2);
+        testClient2.Save();
+
+        testClient.Delete();
+
+        int result = Client.GetAll().Count;
+        Assert.Equal(1, result);
+    }
+
     public void Dispose()
     {
       Client.DeleteAll();
