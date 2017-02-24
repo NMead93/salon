@@ -117,6 +117,39 @@ namespace Salon.Objects
             return foundStylist;
         }
 
+        public List<Client> GetClients()
+        {
+            SqlConnection conn = DB.Connection();
+            conn.Open();
+
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM clients WHERE stylist_id = @Stylist_Id;", conn);
+            SqlParameter cuisineIdParameter = new SqlParameter("@Stylist_Id", this.GetId());
+
+            cmd.Parameters.Add(cuisineIdParameter);
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            List<Client> allClients = new List<Client>{};
+            while(rdr.Read())
+            {
+                int ClientId = rdr.GetInt32(0);
+                string ClientName = rdr.GetString(1);
+                int StylistId = rdr.GetInt32(2);
+                Client newClient = new Client(ClientName, StylistId, ClientId);
+
+                allClients.Add(newClient);
+            }
+            if (rdr != null)
+            {
+                rdr.Close();
+            }
+            if (conn != null)
+            {
+                conn.Close();
+            }
+            return allClients;
+        }
+
         public static void DeleteAll()
         {
             SqlConnection conn = DB.Connection();

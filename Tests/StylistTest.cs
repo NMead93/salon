@@ -81,24 +81,24 @@ namespace Salon
       Assert.Equal(testStylist, foundStylist);
     }
 
-    // [Fact]
-    // public void Test_GetClients_RetrievesAllClientsWithStylist()
-    // {
-    //   Stylist testStylist = new Stylist("Italian");
-    //   testStylist.Save();
-    //
-    //   Client firstClient = new Client("Olive Garden", testStylist.GetId());
-    //   firstClient.Save();
-    //   Client secondClient = new Client("Spaghetti Factory", testStylist.GetId());
-    //   secondClient.Save();
-    //
-    //
-    //   List<Client> testClientList = new List<Client> {firstClient, secondClient};
-    //   List<Client> resultClientList = testStylist.GetClients();
-    //
-    //   Assert.Equal(testClientList, resultClientList);
-    // }
-    //
+    [Fact]
+    public void Test_GetClients_RetrievesAllClientsWithStylist()
+    {
+      Stylist testStylist = new Stylist("Trang");
+      testStylist.Save();
+
+      Client firstClient = new Client("Alex", testStylist.GetId());
+      firstClient.Save();
+      Client secondClient = new Client("Nick", testStylist.GetId());
+      secondClient.Save();
+
+
+      List<Client> testClientList = new List<Client> {firstClient, secondClient};
+      List<Client> resultClientList = testStylist.GetClients();
+
+      Assert.Equal(testClientList, resultClientList);
+    }
+
     // [Fact]
     // public void Test_Delete_DeletesStylistFromDatabase()
     // {
@@ -132,7 +132,7 @@ namespace Salon
    public void Dispose()
    {
      Stylist.DeleteAll();
-    //  Client.DeleteAll();
+     Client.DeleteAll();
    }
 
   }
