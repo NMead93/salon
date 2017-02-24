@@ -8,6 +8,12 @@
         <li>
             <div class="collapsible-header"><i class="material-icons">filter_drama</i>@stylist.GetName()</div>
             <div class="collapsible-body">
+                <form action="/stylists/@stylist.GetId()/update" method="post">
+                    <input type="hidden" name="_method" value="PATCH">
+                    <label for="new-name">New name</label>
+                    <input name="new-name" type="text" value="">
+                    <button type="submit" class="waves-effect waves-green btn">Submit Name</a>
+                </form>
                 <form action="/stylists/@stylist.GetId()/clients" method="get">
                     <button type="submit" name="button" class="btn">Get Clients</button>
                 </form><br>

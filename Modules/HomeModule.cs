@@ -30,6 +30,13 @@ namespace Salon
             return View["stylist-home.cshtml", stylistList];
         };
 
+        Patch["/stylists/{id}/update"] =parameter=>
+        {
+            Stylist foundStylist = Stylist.Find(parameter.id);
+            foundStylist.Update(Request.Form["new-name"]);
+            return View["update-confirmation-stylist", foundStylist];
+        };
+
         Delete["/stylists/{id}/delete"] =parameter=>
         {
             Stylist foundStylist = Stylist.Find(parameter.id);
