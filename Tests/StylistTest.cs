@@ -99,35 +99,35 @@ namespace Salon
       Assert.Equal(testClientList, resultClientList);
     }
 
-    // [Fact]
-    // public void Test_Delete_DeletesStylistFromDatabase()
-    // {
-    //   //Arrange
-    //   string name1 = "Italian";
-    //   Stylist testStylist1 = new Stylist(name1);
-    //   testStylist1.Save();
-    //
-    //   string name2 = "French";
-    //   Stylist testStylist2 = new Stylist(name2);
-    //   testStylist2.Save();
-    //
-    //   Client testClient1 = new Client("Mow the lawn", testStylist1.GetId());
-    //   testClient1.Save();
-    //   Client testClient2 = new Client("Send emails", testStylist2.GetId());
-    //   testClient2.Save();
-    //
-    //   //Act
-    //   testStylist1.Delete();
-    //   List<Stylist> resultStylist = Stylist.GetAll();
-    //   List<Stylist> testStylistList = new List<Stylist> {testStylist2};
-    //
-    //   List<Client> resultClients = Client.GetAll();
-    //   List<Client> testClientList = new List<Client> {testClient2};
-    //
-    //   //Assert
-    //   Assert.Equal(testStylistList, resultStylist);
-    //   Assert.Equal(testClientList, resultClients);
-    // }
+    [Fact]
+    public void Test_Delete_DeletesStylistFromDatabase()
+    {
+      //Arrange
+      string name1 = "Sara";
+      Stylist testStylist1 = new Stylist(name1);
+      testStylist1.Save();
+
+      string name2 = "Donna";
+      Stylist testStylist2 = new Stylist(name2);
+      testStylist2.Save();
+
+      Client testClient1 = new Client("Alex", testStylist1.GetId());
+      testClient1.Save();
+      Client testClient2 = new Client("Nick", testStylist2.GetId());
+      testClient2.Save();
+
+      //Act
+      testStylist1.Delete();
+      List<Stylist> resultStylist = Stylist.GetAll();
+      List<Stylist> testStylistList = new List<Stylist> {testStylist2};
+
+      List<Client> resultClients = Client.GetAll();
+      List<Client> testClientList = new List<Client> {testClient2};
+
+      //Assert
+      Assert.Equal(testStylistList, resultStylist);
+      Assert.Equal(testClientList, resultClients);
+    }
 
    public void Dispose()
    {
