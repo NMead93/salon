@@ -8,6 +8,23 @@
         <li>
             <div class="collapsible-header"><i class="material-icons">perm_contact</i>@client.GetName()</div>
             <div class="collapsible-body">
+                <a class="waves-effect waves-light btn" href="#modal1">Edit Name</a>
+
+                <div id="modal1" class="modal">
+                    <form action="/stylists/@client.GetStylistId()/clients/@client.GetId()/update" method="post">
+                        <input type="hidden" name="_method" value="PATCH">
+                        <input name="new-name" type="hidden" value="@client.GetId()">
+                        <label for="new-name">New name</label>
+                    </form>
+                    <div class="modal-content">
+                        <h4>Write New Name</h4>
+                        <p>A bunch of text</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+                    </div>
+                </div>
+
                 <form action="/stylists/@client.GetStylistId()/clients/@client.GetId()/delete" method="post">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn">Delete Client</button>

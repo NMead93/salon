@@ -73,6 +73,24 @@ namespace Salon
     }
 
     [Fact]
+    public void Test_Update_UpdatesClientInDatabase()
+    {
+      //Arrange
+      string name = "Mag";
+      Client testClient = new Client(name, 2);
+      testClient.Save();
+      string newName = "meg";
+
+      //Act
+      testClient.Update(newName);
+
+      string result = testClient.GetName();
+
+      //Assert
+      Assert.Equal(newName, result);
+    }
+
+    [Fact]
     public void Test_DeleteOneClientFromDatabase()
     {
         Client testClient = new Client("Morgan", 3);

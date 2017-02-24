@@ -68,6 +68,13 @@ namespace Salon
             return View["clients-of-stylist.cshtml", listAndId];
         };
 
+        Patch["/stylists/{id}/clients/{clientId}/update"] =parameter=>
+        {
+            Client foundClient = Client.Find(parameter.clientId);
+            foundClient.Update(Request.Form["new-name"]);
+            return View["update-confirmation-client", foundClient];
+        };
+
         Delete["/stylists/{id}/clients/{clientId}/delete"] =parameter=>
         {
             Client foundClient = Client.Find(parameter.clientId);
