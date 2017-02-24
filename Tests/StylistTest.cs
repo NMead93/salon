@@ -35,37 +35,37 @@ namespace Salon
      Assert.Equal(firstStylist, secondStylist);
    }
 
-   // [Fact]
-   //  public void Test_Save_SavesStylistToDatabase()
-   //  {
-   //    //Arrange
-   //    Stylist testStylist = new Stylist("Japanese");
-   //    testStylist.Save();
-   //
-   //    //Act
-   //    List<Stylist> result = Stylist.GetAll();
-   //    List<Stylist> testList = new List<Stylist>{testStylist};
-   //
-   //    //Assert
-   //    Assert.Equal(testList, result);
-   //  }
+   [Fact]
+    public void Test_Save_SavesStylistToDatabase()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("Rhonda");
+      testStylist.Save();
 
-   // [Fact]
-   //  public void Test_Save_AssignsIdToStylistObject()
-   //  {
-   //    //Arrange
-   //    Stylist testStylist = new Stylist("Italian");
-   //    testStylist.Save();
-   //
-   //    //Act
-   //    Stylist savedStylist = Stylist.GetAll()[0];
-   //
-   //    int result = savedStylist.GetId();
-   //    int testId = testStylist.GetId();
-   //
-   //    //Assert
-   //    Assert.Equal(testId, result);
-   //  }
+      //Act
+      List<Stylist> result = Stylist.GetAll();
+      List<Stylist> testList = new List<Stylist>{testStylist};
+
+      //Assert
+      Assert.Equal(testList, result);
+    }
+
+   [Fact]
+    public void Test_Save_AssignsIdToStylistObject()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("Karla");
+      testStylist.Save();
+
+      //Act
+      Stylist savedStylist = Stylist.GetAll()[0];
+
+      int result = savedStylist.GetId();
+      int testId = testStylist.GetId();
+
+      //Assert
+      Assert.Equal(testId, result);
+    }
 
     // [Fact]
     // public void Test_Find_FindsStylistInDatabase()

@@ -61,6 +61,31 @@ namespace Salon.Objects
       return allStylists;
     }
 
+    public void Save()
+      {
+        SqlConnection conn = DB.Connection();
+        conn.Open();
+
+        SqlCommand cmd = new SqlCommand("INSERT INTO stylists (name) OUTPUT INSERTED.id VALUES (@StylistName);", conn);
+
+        SqlParameter nameParameter = new SqlParameter("@StylistName", this.GetName());
+        cmd.Parameters.Add(nameParameter);
+        SqlDataReader rdr = cmd.ExecuteReader();
+
+        while(rdr.Read())
+        {
+          this._id = rdr.GetInt32(0);
+        }
+        if (rdr != null)
+        {
+          rdr.Close();
+        }
+        if(conn != null)
+        {
+          conn.Close();
+        }
+      }
+
 
 
     public static void DeleteAll()
