@@ -11,7 +11,16 @@ namespace Salon
     public HomeModule()
     {
 
+        Get["/"] =_=>
+        {
+            return View["index.cshtml"];
+        };
 
+        Get["/stylists"] =_=>
+        {
+            List<Stylist> stylistList = Stylist.GetAll();
+            return View["stylist-home.cshtml", stylistList];
+        }
 
     }
   }
