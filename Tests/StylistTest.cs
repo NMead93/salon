@@ -39,7 +39,7 @@ namespace Salon
     public void Test_Save_SavesStylistToDatabase()
     {
       //Arrange
-      Stylist testStylist = new Stylist("Rhonda");
+      Stylist testStylist = new Stylist("Vyvy");
       testStylist.Save();
 
       //Act
@@ -54,7 +54,7 @@ namespace Salon
     public void Test_Save_AssignsIdToStylistObject()
     {
       //Arrange
-      Stylist testStylist = new Stylist("Karla");
+      Stylist testStylist = new Stylist("Vyvy");
       testStylist.Save();
 
       //Act
@@ -67,19 +67,19 @@ namespace Salon
       Assert.Equal(testId, result);
     }
 
-    // [Fact]
-    // public void Test_Find_FindsStylistInDatabase()
-    // {
-    //   //Arrange
-    //   Stylist testStylist = new Stylist("Italian");
-    //   testStylist.Save();
-    //
-    //   //Act
-    //   Stylist foundStylist = Stylist.Find(testStylist.GetId());
-    //
-    //   //Assert
-    //   Assert.Equal(testStylist, foundStylist);
-    // }
+    [Fact]
+    public void Test_Find_FindsStylistInDatabase()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("Vyvy");
+      testStylist.Save();
+
+      //Act
+      Stylist foundStylist = Stylist.Find(testStylist.GetId());
+
+      //Assert
+      Assert.Equal(testStylist, foundStylist);
+    }
 
     // [Fact]
     // public void Test_GetClients_RetrievesAllClientsWithStylist()
