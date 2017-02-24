@@ -100,6 +100,24 @@ namespace Salon
     }
 
     [Fact]
+    public void Test_Update_UpdatesStylistInDatabase()
+    {
+      //Arrange
+      string name = "Mag";
+      Stylist testStylist = new Stylist(name);
+      testStylist.Save();
+      string newName = "meg";
+
+      //Act
+      testStylist.Update(newName);
+
+      string result = testStylist.GetName();
+
+      //Assert
+      Assert.Equal(newName, result);
+    }
+
+    [Fact]
     public void Test_Delete_DeletesStylistFromDatabase()
     {
       //Arrange

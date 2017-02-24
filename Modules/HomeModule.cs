@@ -30,6 +30,18 @@ namespace Salon
             return View["stylist-home.cshtml", stylistList];
         };
 
+        Delete["/stylists/{id}/delete"] =parameter=>
+        {
+            Stylist foundStylist = Stylist.Find(parameter.id);
+            List<Client> clientList = foundStylist.GetClients();
+            foreach (var client in clientList)
+            {
+                client.Delete();
+            }
+            foundStylist.Delete();
+            return View["delete-confirmation.cshtml", foundStylist];
+        };
+
         Get["/stylists/{id}/clients"] =parameter=>
         {
             Stylist foundStylist = Stylist.Find(parameter.id);
@@ -54,6 +66,13 @@ namespace Salon
             listAndId.Add("id", idList);
             listAndId.Add("clients", clientList);
             return View["clients-of-stylist.cshtml", listAndId];
+        };
+
+        Delete["/stylists/{id}/clients/{clientId}/delete"] =parameter=>
+        {
+            Client foundClient = Client.Find(parameter.clientId);
+            foundClient.Delete();
+            return View["delete-confirmation-client.cshtml", foundClient];
         };
 
     }

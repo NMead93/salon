@@ -8,7 +8,7 @@
         <li>
             <div class="collapsible-header"><i class="material-icons">perm_contact</i>@client.GetName()</div>
             <div class="collapsible-body">
-                <form action="/clients/@client.GetStylistId()/clients/delete" method="post">
+                <form action="/stylists/@client.GetStylistId()/clients/@client.GetId()/delete" method="post">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn">Delete Client</button>
                 </form>
